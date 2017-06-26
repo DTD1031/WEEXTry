@@ -7,6 +7,8 @@ export default {
             if (this.$router) {
                 this.$router.push(to)
             }
-        }
+        },
+
+
     }
 }

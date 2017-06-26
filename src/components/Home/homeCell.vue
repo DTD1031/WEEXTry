@@ -52,6 +52,7 @@
     margin: 5%;
     height: 400px;
     background-color: white;
+    border-radius: 10px;
 }
     .title{
 

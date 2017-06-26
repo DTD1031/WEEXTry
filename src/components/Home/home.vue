@@ -8,9 +8,6 @@
             <input class="searchInput"/>
         </div>
         <!--body-->
-        <!--<div class="body" v-for="item in bass" :id="item" :key="item">-->
-            <!--<homeCell>{{item}}</homeCell>-->
-        <!--</div>-->
         <list>
             <cell class="cell" v-for="item in bass">
                 <homeCell>{{item}}</homeCell>

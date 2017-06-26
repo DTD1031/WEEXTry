@@ -2,8 +2,11 @@
 import VueRouter from 'vue-router'
 
 //导入使用的组件
-import home from'../Home/home.vue'
-import uct from '../Ucenter/Ucenter.vue'
+import home from'../components/Home/home.vue'
+import uct from '../components/Ucenter/Ucenter.vue'
+import more from '../components/More/more.vue'
+import moreNews from '../components/More/moreNews.vue'
+import moreMsg from '../components/More/moreMsg.vue'
 
 Vue.use(VueRouter)
 
@@ -14,9 +17,11 @@ export default new VueRouter({
     routes:[
 
         {path:'/home',name:'home',component: home},
-        {path:'/uct',name:'uct',component: uct}
-
-        // {path:'/messages',component:messages}
+        {path:'/uct',name:'uct',component: uct},
+        // {path:'/more/',name:'more',component: more,
+        //     children:[{path:'',name:'moreNews',component:moreNews},
+        //               {path:'Msg',name:'moreMsg',component:moreMsg}]
+        // }
 
     ]
 

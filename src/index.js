@@ -9,6 +9,6 @@ app.router=router  //给根组件设置路由
 
 Vue.mixin(minix);
 
-export default new Vue(app);  //穿件vue对象
+export default new Vue(app);  //创建vue对象
 
 router.push('/home')  //指定一个路由入口（初始显示的页面内容）

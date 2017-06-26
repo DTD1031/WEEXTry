@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper">
-
       <router-view style="flex: 1"></router-view>
       <div class="bottomDiv">
           <div class="routeBt" @click="jump('/home')">
@@ -9,7 +8,7 @@
           <div class="routeBt" @click="jump('/uct')">
               <text class="bottomTitle">项目列表</text>
           </div>
-          <div class="routeBt" @click="jump('/home')">
+          <div class="routeBt" @click="jump('/more')">
               <text class="bottomTitle" >我</text>
           </div>
       </div>
@@ -49,9 +48,9 @@
 </style>
 
 <script>
-  import bottomBt from "./bottomBt.vue"
-  import home from "./Home/home.vue"
-  import uct from "./Ucenter/Ucenter.vue"
+  import bottomBt from "./components/bottomBt.vue"
+  import home from "./components/Home/home.vue"
+  import uct from "./components/Ucenter/Ucenter.vue"
 
   export default new Vue({
 
