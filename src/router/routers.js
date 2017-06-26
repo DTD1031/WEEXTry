@@ -18,10 +18,10 @@ export default new VueRouter({
 
         {path:'/home',name:'home',component: home},
         {path:'/uct',name:'uct',component: uct},
-        // {path:'/more/',name:'more',component: more,
-        //     children:[{path:'',name:'moreNews',component:moreNews},
-        //               {path:'Msg',name:'moreMsg',component:moreMsg}]
-        // }
+        {path:'/more/',name:'more',component: more,
+            children:[{path:'',name:'moreNews',component:moreNews},
+                      {path:'Msg',name:'moreMsg',component:moreMsg}]
+        }
 
     ]
 

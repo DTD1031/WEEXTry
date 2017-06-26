@@ -9,6 +9,12 @@ export default {
             }
         },
 
+        getImg (imgSrc){
 
+            if (imgSrc){
+
+                return 'http://10.88.1.166/fileServer/' + imgSrc
+            }
+        }
     }
 }
