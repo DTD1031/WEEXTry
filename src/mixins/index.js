@@ -13,7 +13,7 @@ export default {
 
             if (imgSrc){
 
-                return 'http://10.88.1.166/fileServer/' + imgSrc
+                return 'http://10.88.1.33/fileServer/' + imgSrc
             }
         }
     }

@@ -20,6 +20,7 @@
     "vuex": "^2.1.1",
     "vuex-router-sync": "^4.0.1",
     "weex-components": "^0.2.0",
+    "weex-vue-components": "^0.1.3",
     "weex-vue-render": "^0.11.2"
   },
   "devDependencies": {
