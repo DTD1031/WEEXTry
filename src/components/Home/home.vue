@@ -3,21 +3,28 @@
         <!--header-->
         <div class="header">
             <div class="searchBt">
-                <text style="color:white;">{{count}}</text>
+                <text style="color:white;" @click="checkout">{{count}}</text>
             </div>
             <input class="searchInput"/>
         </div>
         <!--body-->
         <scroller class="bodyScroller">
             <!--headRefresh-->
-            <refresh class="refreshDiv" @refresh="onresfresh">
+            <refresh class="refreshDiv" @refresh="myResfresh" @pullingdown="pulling">
                 <text class="refreshText">it's refresh</text>
             </refresh>
+            <!--login-->
             <slider class="slider" interval="2000" auto-play="true">
                 <div class="frame" v-for="item in imageList">
                     <image class="image" resize="stretch" :src="item.src"></image>
                 </div>
             </slider>
+            <!--login-->
+            <div class="loginView">
+                <div class="loginDiv" @click="goToLogin">
+                    <text>登录</text>
+                </div>
+            </div>
             <div class="itemList" v-for="item in bass">
                 <homeCell class="cell">{{item}}</homeCell>
             </div>
@@ -25,25 +32,14 @@
                 <text>load more...</text>
             </loading>
         </scroller>
-        <!--list-->
-
-
-
-        <!--<list class="itemList">-->
-            <!--<cell class="cell" v-for="item in bass">-->
-                <!--<homeCell>{{item}}</homeCell>-->
-            <!--</cell>-->
-        <!--</list>-->
     </div>
 </template>
 
 
 <style>
     .homeMain{
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        background-color: lightgray;
+
+        background-color: #afddff;
     }
     .header{
         background-color: #0088fb;
@@ -77,9 +73,8 @@
     }
     .bodyScroller{
 
-        flex: 1;
         display: flex;
-        background-color: forestgreen;
+        background-color: #afddff;
 
         flex-direction: column;
         align-items: stretch;
@@ -94,8 +89,26 @@
         height: 400px;
         width: 750px;
     }
-    .frame {
+    .loginView {
 
+        margin-top: 6px;
+        height: 130px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .loginDiv{
+
+        width: 240px;
+        height: 70px;
+        margin-right: 30px;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
     }
     .refreshDiv{
 
@@ -138,9 +151,24 @@
         },
         methods:{
 
-            onresfresh:function (even) {
+            myResfresh (even) {
 
-                return this.$data.count ++;
+                this.$data.count ++;
+            },
+
+            pulling (even) {
+
+                this.$data.count ++;
+            },
+
+            checkout (even){
+
+                this.$data.count = 0;
+            },
+            goToLogin (even){
+
+                this.$data.count = 999;
+                this.jump('/login');
             }
         },
         components:{
