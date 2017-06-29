@@ -1,16 +1,16 @@
 <template>
     <div class="homeMain">
         <!--header-->
-        <div class="header">
+        <div class="homeHeader">
             <div class="searchBt">
-                <text style="color:white;" @click="checkout">{{count}}</text>
+                <text style="color:white;font-size: 20wx" @click="checkout">{{count}}</text>
             </div>
             <input class="searchInput"/>
         </div>
         <!--body-->
         <scroller class="bodyScroller">
             <!--headRefresh-->
-            <refresh class="refreshDiv" @refresh="myResfresh" @pullingdown="pulling">
+            <refresh class="refreshDiv" @refresh="nnn" :display="refreshing ? 'show' : 'hide'">
                 <text class="refreshText">it's refresh</text>
             </refresh>
             <!--login-->
@@ -41,10 +41,9 @@
 
         background-color: #afddff;
     }
-    .header{
+    .homeHeader{
         background-color: #0088fb;
         height: 100px;
-
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -112,6 +111,10 @@
     }
     .refreshDiv{
 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         background-color: #afddff;
     }
     .refreshText{
@@ -135,6 +138,7 @@
 <script type="text/ecmascript-6">
 
     import homeCell from "./homeCell.vue"
+    const modal = weex.requireModule('modal')
 
     export default {
         name: 'home',
@@ -146,14 +150,26 @@
                     { src: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=430472977,3630340535&fm=26&gp=0.jpg'},
                     { src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498563839597&di=1ec085a5d860f9ba6b2c339454b7bbf3&imgtype=0&src=http%3A%2F%2Fimg.newyx.net%2Fnewspic%2Fimage%2F201411%2F15%2F153d372e1f.jpg'},
                     { src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498563839593&di=2521ed845a7dc572f1d5e270bb0e362f&imgtype=0&src=http%3A%2F%2Fow.replays.net%2Fuploads%2Fremote%2F24861464934623.jpg'}
-                ]
+                ],
+                refreshing:true
             }
         },
         methods:{
 
-            myResfresh (even) {
+            myResfresh (event) {
+                this.$data.count ++;
+                console.log('is refreshing')
+                modal.toast({ message: 'refresh', duration: 1 })
+                this.refreshing = true
+                setTimeout(() => {
+                    this.refreshing = false
+                }, 2000)
+            },
+            nnn (even) {
 
                 this.$data.count ++;
+                this.$data.refreshing = true
+
             },
 
             pulling (even) {

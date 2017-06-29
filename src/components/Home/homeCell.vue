@@ -56,7 +56,7 @@
 }
     .title{
 
-        font-size: 40px;
+        font-size: 26px;
         padding-top: 15px;
         padding-left: 20px;
     }
@@ -70,7 +70,7 @@
 
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: space-between;
 
         margin-right: 20px;
@@ -78,7 +78,7 @@
     }
     .leftNum{
 
-        margin-left: 20px;
+        margin-left: 0px;
     }
     .rateView{
 
@@ -90,19 +90,19 @@
     }
     .rateNum{
 
-        font-size: 70px;
+        font-size: 36px;
         font-weight: bolder;
         color: red;
     }
     .itemTitle{
 
-        font-size: 27px;
+        font-size: 17px;
         color: grey;
     }
     .rateSign{
         position: relative;
-        bottom: 15px;
-        font-size: 30px;
+        bottom: 4px;
+        font-size: 22px;
     }
     .rightNum{
 
@@ -121,7 +121,7 @@
     }
     .rightNumNum{
 
-        font-size: 35px;
+        font-size: 24px;
         padding-left: 10px;
         margin-right: 10px;
     }
@@ -129,7 +129,7 @@
 
         position: relative;
         top: 5px;
-        font-size: 20px;
+        font-size: 17px;
     }
     .progressBg{
 

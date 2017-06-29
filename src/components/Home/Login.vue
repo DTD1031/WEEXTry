@@ -53,16 +53,6 @@
         background-color: darkslategrey;
 
     }
-    .header{
-
-        height: 100px;
-        width: 750px;
-        background-color: #0088fb;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-    }
     .navBt{
 
         width: 100px;
@@ -72,6 +62,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        border-radius: 10px;
     }
     .leftNavBt{
 
@@ -106,9 +97,8 @@
         width: 120px;
         font-size: 35px;
         text-align: center;
-        background-color: #afddff;
-
         margin-right: 20px;
+        color: white;
     }
     .configBt{
 
@@ -119,7 +109,6 @@
         margin-top: 40px;
         background-color: #0088fb;
         color: white;
-
         display: flex;
         justify-content: center;
         align-items: center;

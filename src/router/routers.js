@@ -19,7 +19,7 @@ export default new VueRouter({
 
         {path:'/home',name:'home',component: home},
         {path:'/uct',name:'uct',component: login},
-        {path:'/more',name:'more',component: more,
+        {path:'/more',name:'',component: more,
             children:[{path:'',name:'moreNews',component:moreNews},
                       {path:'Msg',name:'moreMsg',component:moreMsg}]
         },

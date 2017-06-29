@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-      <router-view style="flex: 1"></router-view>
+      <router-view class="mainRouterView"></router-view>
       <div class="bottomDiv">
           <div class="routeBt" @click="jump('/home')">
               <text class="bottomTitle">首页</text>
@@ -17,10 +17,11 @@
 
 <style scoped>
   .wrapper {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
 
+  }
+  .mainRouterView{
+
+      flex: 1;
   }
   .bottomDiv{
 
@@ -43,7 +44,7 @@
 
       color: white;
       height: 50px;
-      font-size: 40px;
+      font-size: 20px;
   }
 </style>
 
