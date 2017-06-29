@@ -56,12 +56,12 @@
 }
     .title{
 
-        font-size: 14wx;
+        font-size: 30px;
         padding-top: 15px;
         padding-left: 20px;
     }
     .nextTitle{
-        font-size: 12wx;
+        font-size: 28px;
         padding-top: 5px;
         padding-left: 20px;
         color: grey;
@@ -91,24 +91,24 @@
     .rateNum{
 
 
-        font-size: 36wx;
+        font-size: 82px;
         font-weight: bolder;
         color: red;
     }
     .itemTitle{
 
-        font-size: 12wx;
+        font-size: 30px;
         color: grey;
     }
     .rateSign{
         position: relative;
         bottom: 15px;
-        font-size: 22wx;
+        font-size: 38px;
     }
     .leftNum{
         flex-basis:0;
         flex-grow:1;
-        margin-left: 20wx;
+        margin-left: 40px;
     }
     .rightNum{
         flex-basis:0;
@@ -128,7 +128,7 @@
     }
     .rightNumNum{
 
-        font-size: 17wx;
+        font-size: 34px;
         padding-left: 10px;
         margin-right: 10px;
     }
@@ -136,7 +136,7 @@
 
         position: relative;
         top: 5px;
-        font-size: 13wx;
+        font-size: 26px;
     }
     .progressBg{
 
@@ -170,7 +170,7 @@
 
         color: white;
 
-        font-size: 30wx;
+        font-size: 34px;
         font-weight: 500;
     }
 
