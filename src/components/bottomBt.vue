@@ -1,6 +1,7 @@
 <template>
-    <div id="bt">
-
+    <div class="routeBt" @click="jump('/login')">
+        <image class="tabberIcon" :src="imgSrc"></image>
+        <text class="{tabSelected == 1 ? bottomTitleSelected : bottomTitle}" ref="tab2">{{title}}</text>
     </div>
 </template>
 
@@ -10,17 +11,38 @@
         data () {
             return {}
         },
-        props:['title']
+        props:['title','imgSrc']
     }
 </script>
 
 <style>
+    .routeBt{
+        flex: 1;
+        background-color: white;
 
-    #bt{
+        border-color: lightgray;
+        border-right-width: 2px;
 
-        background-color: goldenrod;
-        width: 33%;
-        height: inherit;
-        margin-left: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .tabberIcon{
+
+        width: 40px;
+        height:40px;
+    }
+    .bottomTitle{
+
+        margin-top: 12px;
+        color: #444444;
+        font-size: 27px;
+    }
+    .bottomTitleSelected{
+
+        margin-top: 12px;
+        color: mediumblue;
+        font-weight: 800;
+        font-size: 27px;
     }
 </style>

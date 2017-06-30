@@ -3,7 +3,7 @@
         <!--header-->
         <div class="homeHeader">
             <div class="searchBt">
-                <text style="color:white;font-size: 20wx" @click="checkout">{{count}}</text>
+                <text style="color:white;font-size: 20px" @click="checkout">{{count}}</text>
             </div>
             <input class="searchInput"/>
         </div>
@@ -52,7 +52,6 @@
     }
     .searchInput{
 
-        width: 50%;
         flex: 4;
         margin-right: 10%;
         background-color: white;

@@ -38,7 +38,7 @@
 
             goback (even){
 
-                this.jump('/home')
+                this.jump('/')
             }
         }
     }

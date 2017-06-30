@@ -11,4 +11,4 @@ Vue.mixin(minix);
 
 export default new Vue(app);  //创建vue对象
 
-router.push('/home')  //指定一个路由入口（初始显示的页面内容）
+router.push('/')  //指定一个路由入口（初始显示的页面内容）
