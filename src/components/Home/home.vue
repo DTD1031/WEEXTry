@@ -21,8 +21,15 @@
             </slider>
             <!--login-->
             <div class="loginView">
-                <div class="loginDiv" @click="goToLogin">
-                    <text>登录</text>
+                <image style="width: 80px;height: 80px;margin-left: 30px;margin-right: 50px" src="https://m.zhelitou.com.cn/images/up.png"></image>
+                <slider class="homeDataSlider" interval="2000" auto-play="true">
+                    <div class="homeDataSliderDiv" v-for="item in sliderData">
+                        <text class="homeDataSliderTitle">{{item.title}}</text>
+                        <text class="homeDataSliderNum">{{item.num}}</text>
+                    </div>
+                </slider>
+                <div class="loginBt" @click="goToLogin">
+                    <text style="color: white;font-weight: bold">登录</text>
                 </div>
             </div>
             <div class="itemList" v-for="item in bass">
@@ -91,18 +98,51 @@
 
         margin-top: 6px;
         height: 130px;
+        background-color: white;
 
         display: flex;
         flex-direction: row;
-        justify-content: flex-end;
+        flex-wrap: nowrap;
+        justify-content: space-around;
         align-items: center;
     }
-    .loginDiv{
+
+    .homeDataSlider{
+
+        width: 400px;
+        height: 100px;
+
+    }
+    .homeDataSliderDiv{
+
+
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+    }
+    .homeDataSliderTitle{
+
+
+        color: lightgray;
+        font-size: 30px;
+    }
+    .homeDataSliderNum{
+
+
+        font-size: 44px;
+        color: #fd9231;
+        font-weight: 500;
+
+    }
+    .loginBt{
 
         width: 240px;
         height: 70px;
         margin-right: 30px;
-        background-color: white;
+
+        background-color: red;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -144,6 +184,11 @@
         data () {
             return {
                 bass:['1','2','3','4','5','6','7'],
+                sliderData:[
+                    {title:'累计盘活金额',num:'43000'},
+                    {title:'累计注册人数',num:'99900'},
+                    {title:'累计投资金额',num:'11111'},
+                ],
                 count:1,
                 imageList: [
                     { src: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=430472977,3630340535&fm=26&gp=0.jpg'},
