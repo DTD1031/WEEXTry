@@ -1,12 +1,12 @@
 <template>
     <div class="homeCellMain">
-        <text class="title">Title</text>
-        <text class="nextTitle">next title</text>
+        <text class="title">{{item.name}}</text>
+        <text class="nextTitle">{{ item.agent ? item.agent : '_' }}</text>
         <!--midView-->
         <div class="midDiv">
             <div class="leftNum">
                 <div class="rateView">
-                    <text class="rateNum">5.8</text>
+                    <text class="rateNum">{{item.annualrate}}</text>
                     <text class="rateSign">%</text>
                 </div>
                 <text class="itemTitle">预期年化收益率</text>
@@ -15,20 +15,20 @@
                 <!--timeLimit-->
                 <div class="rightNumCell">
                     <text class="itemTitle">融资期限</text>
-                    <text class="rightNumNum">12+12</text>
+                    <text class="rightNumNum">{{item.deadline}}</text>
                     <text class="rightNumUnit">个月</text>
                 </div>
                 <!--startNum-->
                 <div class="rightNumCell">
                     <text class="itemTitle">认购起点</text>
-                    <text class="rightNumNum">5</text>
+                    <text class="rightNumNum">{{item.mintenderedsum}}</text>
                     <text class="rightNumUnit">万元</text>
                 </div>
             </div>
         </div>
         <!--progress-->
         <div class="progressBg">
-            <div class="progress"></div>
+            <div class="progress" :style="{width: progress + 'px'}"></div>
         </div>
         <!--button-->
         <div class="investBt">
@@ -42,6 +42,15 @@
         name: "homeCell",
         data () {
             return {}
+        },
+        props:['item'],
+        computed:{
+
+            progress(){
+
+               var a = this.$props.item.hasinvestamount/this.$props.item.borrowamount;
+               return a*654;
+            }
         }
     }
 </script>
@@ -49,7 +58,9 @@
 <style>
 .homeCellMain{
 
-    margin: 5%;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
     height: 400px;
     background-color: white;
     border-radius: 10px;
