@@ -6,7 +6,7 @@
                 <div class="uctHeaderTop">
                     <image class="uctIconImage" src="http://u2.tdimg.com/5/208/80/_101434714140625690614860509735790084055.jpg"></image>
                     <div class="uctHeaderNameDiv">
-                        <text class="uctName">这是一个非法的用户名</text>
+                        <text class="uctName">{{username}}</text>
                         <text class="uctUserType">个人用户</text>
                     </div>
                     <image class="uctMsg" src="https://m.zhelitou.com.cn/images/mes.png"></image>
@@ -55,6 +55,7 @@
         name: 'uct',
         data () {
             return {
+                username:this.$store.getters.userinfo.username,
                 enumList1:[
                     {title:'我的项目',iconSrc:'https://m.zhelitou.com.cn/images/project.png'},
                     {title:'还本付息',iconSrc:''},

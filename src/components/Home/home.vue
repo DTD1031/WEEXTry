@@ -28,7 +28,7 @@
                     </div>
                 </slider>
                 <div class="loginBt" @click="goToLogin">
-                    <text style="color: white;font-weight: bold">登录</text>
+                    <text style="color: white;font-weight: bold">{{loginText}}</text>
                 </div>
             </div>
             <div v-if="!ListData" class="loadingView">
@@ -55,6 +55,7 @@
         name: 'home',
         data () {
             return {
+                loginText:this.$store.getters.userinfo.username?this.$store.getters.userinfo.username:'登录',
                 ListData:[],
                 sliderData:[
                     {title:'累计盘活金额',num:'43000'},
@@ -73,8 +74,9 @@
         methods:{
 
             goToLogin (even){
-
-                this.jump('/login');
+                if(!this.$store.getters.userinfo.username){
+                    this.jump('/login');
+                }
             },
             getListData(){
 
