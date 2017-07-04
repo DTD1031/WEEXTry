@@ -9,13 +9,13 @@
         <!--body-->
         <scroller class="bodyScroller">
             <!--headRefresh-->
-            <refresh class="refreshDiv" @refresh="getListData()">
-                <text class="refreshText">it's refresh</text>
-            </refresh>
+            <!--<refresh class="refreshDiv" @refresh="getListData()">-->
+                <!--<text class="refreshText">it's refresh</text>-->
+            <!--</refresh>-->
             <!--login-->
-            <slider class="slider" interval="2000" auto-play="true">
-                <div class="frame" v-for="item in imageList">
-                    <image class="image" resize="stretch" :src="item.src"></image>
+            <slider class="bannerSlider" interval="2000" auto-play="true">
+                <div class="bannerSliderFrame" v-for="item in imageList">
+                    <image class="bannerImage"  resize="stretch" :src="item.src"></image>
                 </div>
             </slider>
             <!--login-->
@@ -119,6 +119,7 @@
     .homeMain{
 
         background-color: lightgray;
+        flex: 1;
     }
     .homeHeader{
         background-color: white;
@@ -136,21 +137,28 @@
     }
     .bodyScroller{
 
+
         display: flex;
         background-color: lightgray;
 
         flex-direction: column;
         align-items: stretch;
     }
-    .slider{
+    .bannerSlider{
 
-        height: 400px;
-
-    }
-    .image{
-
-        height: 400px;
         width: 750px;
+        height: 400px;
+        display: flex;
+    }
+    .bannerSliderFrame{
+
+        width: 750px;
+        height: 400px;
+    }
+    .bannerImage{
+
+        width: 750px;
+        height: 400px;
     }
     .loginView {
 
@@ -175,6 +183,7 @@
 
 
         height: 100px;
+        width: 400px;
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
