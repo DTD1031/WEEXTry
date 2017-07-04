@@ -4,19 +4,32 @@
   <meta charset="utf-8">
   <title>weex-vue-demo</title>
 
-  <meta name="viewport" content="width=750,initial-scale=0.5,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no">
+  <meta name="viewport" content="user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-touch-fullscreen" content="yes">
   <meta name="format-detection" content="telephone=no, email=no">
   <!-- <style>body > div { height: 100%; }</style> -->
   <style>body::before { content: "1"; height: 1px; overflow: hidden; color: transparent; display: block; }</style>
-  <script src="./assets/phantom-limb.js"></script>
+  <!--script src="./assets/phantom-limb.js"></script-->
   <script src="./node_modules/vue/dist/vue.runtime.js"></script>
   <script src="./node_modules/weex-vue-render/dist/index.js"></script>
 </head>
 <body>
   <div id="root"></div>
   <script src="./dist/app.web.js"></script>
+
+  <script>
+    window.onload=function () {
+        var meta = document.getElementsByTagName('meta');
+        var aaaa = window.screen.width/750;
+        var content = "width=750,initial-scale=AAAAA,maximum-scale=AAAAA,minimum-scale=AAAAA,user-scalable=no";
+        content=content.replace(/AAAAA/g, aaaa);
+//        alert(content);
+        meta["viewport"].setAttribute('content',content);
+
+    }
+  </script>
+
 </body>
 </html>
