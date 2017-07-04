@@ -17,6 +17,7 @@
     .mainRouterView{
 
         flex: 1;
+
     }
     .bottomDiv{
         border-top-width: 2px;
@@ -26,6 +27,11 @@
         justify-content: space-between;
         align-items: stretch;
         height: 100px;
+
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
     }
     .routeBt{
         flex: 1;

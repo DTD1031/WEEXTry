@@ -1,6 +1,6 @@
 <template>
     <div>
-        <scroller>
+        <scroller class="uctScroller">
             <!--header-->
             <div class="uctHeadDiv">
                 <div class="uctHeaderTop">
@@ -74,11 +74,17 @@
 </script>
 
 <style scoped>
+    .uctScroller{
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
     .uctHeadDiv{
 
+        flex: 1;
         background-color: #f54e60;
         height: 502px;
-        width: 750px;
     }
     .uctHeaderTop{
 
@@ -128,11 +134,8 @@
 
         margin-top: 30px;
         padding-top: 10px;
-        padding-left: 10px;
-        padding-right: 10px;
         padding-bottom: 10px;
 
-        width: 750px;
         height: 188px;
         display: flex;
         flex-direction: column;
