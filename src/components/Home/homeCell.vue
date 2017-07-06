@@ -30,6 +30,7 @@
         <div class="progressBg">
             <div class="progress" :style="{width: progress + 'px'}"></div>
         </div>
+
         <!--button-->
         <div class="investBt">
             <text class="investBtTitle">立即投资</text>
@@ -41,14 +42,21 @@
     export default {
         name: "homeCell",
         data () {
-            return {}
+            return {
+//                item:{}
+            }
         },
-        props:['item'],
+        props:{
+            item:{
+                type:Object
+            }
+        },
         computed:{
 
             progress(){
+//                this.toastMsg('sss='+this.item.hasinvestamount);
 
-               var a = this.$props.item.hasinvestamount/this.$props.item.borrowamount;
+               var a = this.item.hasinvestamount/this.item.borrowamount;
                return a*654;
             }
         }
