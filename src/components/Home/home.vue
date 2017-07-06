@@ -6,12 +6,16 @@
             <text style="flex: 1;text-align: center;color: #fc5164;font-size: 40px;font-weight: bold">浙里投</text>
             <image class="homeHeadButton" style="margin-right: 30px" src="https://m.zhelitou.com.cn/images/index_tel.png"></image>
         </div>
-        <!--body-->
-        <scroller class="bodyScroller">
+        <!--bodyd-->
+        <!--a1-->
+        <scroller class="bodyScroller" ref="homeScroll">
             <!--headRefresh-->
-            <!--<refresh class="refreshDiv" @refresh="getListData()">-->
-                <!--<text class="refreshText">it's refresh</text>-->
-            <!--</refresh>-->
+            <refresh class="refreshDiv" @refresh="pullingRefresh" @pullingdown="pullingForRefresh" :display="refreshing">
+                <text v-if="pullingType === 'pulling'" class="refreshText">下拉刷新</text>
+                <text v-else-if="pullingType === 'willRefresh'" class="refreshText">松手后开始刷新</text>
+                <text v-else-if="pullingType === 'refreshing'" class="refreshText">正在刷新...</text>
+                <text v-else-if="pullingType === 'pullingFinished'" class="refreshText">刷新完成☑️</text>
+            </refresh>
             <!--login-->
             <slider class="bannerSlider" interval="2000" auto-play="true">
                 <div class="bannerSliderFrame" v-for="item in imageList">
@@ -31,15 +35,17 @@
                     <text style="color: white;font-weight: bold">{{loginText}}</text>
                 </div>
             </div>
-            <div v-if="!ListData" class="loadingView">
+            <div v-if="!ListData[1]" class="loadingView">
                 <text>正在加载中……</text>
             </div>
-            <div v-else class="itemList" v-for="item in ListData">
+            <div v-else-if="ListData[0]" class="itemList" v-for="item in ListData">
                 <homeCell class="cell"
                           :item="item"
                 >{{item}}</homeCell>
             </div>
-            <div style="height: 50px"></div>
+            <div style="flex: 1;" v-else>
+                <text>{{loadingError}}</text>
+            </div>
         </scroller>
     </div>
 </template>
@@ -68,41 +74,91 @@
                     { src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498563839597&di=1ec085a5d860f9ba6b2c339454b7bbf3&imgtype=0&src=http%3A%2F%2Fimg.newyx.net%2Fnewspic%2Fimage%2F201411%2F15%2F153d372e1f.jpg'},
                     { src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498563839593&di=2521ed845a7dc572f1d5e270bb0e362f&imgtype=0&src=http%3A%2F%2Fow.replays.net%2Fuploads%2Fremote%2F24861464934623.jpg'}
                 ],
-                refreshing:true
+                refreshing:'hide',
+                pullingType: 'pulling',
+                pullingD:'0',
+                loadingError:''
             }
         },
         methods:{
 
+            testR (){
+
+
+                this.refreshing = 'show'
+                setTimeout(() => {
+                    this.refreshing = 'hide'
+                }, 2000)
+            },
             goToLogin (even){
                 if(!this.$store.getters.userinfo.username){
                     this.jump('/login');
                 }
             },
+            pullingForRefresh(even){
+
+                console.log(even.pullingDistance);
+                var distance = even.pullingDistance;
+                this.$data.pullingD = distance;
+                if ((distance < 100 && distance > -100) && this.refreshing === 'hide'){
+
+                    this.pullingType = 'pulling';
+
+                }else if ((distance > 100 || distance < -100) && this.refreshing === 'hide'){
+
+                    this.pullingType = 'willRefresh';
+                }
+            },
+            pullingRefresh(){
+
+                if (this.pullingType === 'willRefresh'){
+
+                    this.$data.refreshing = 'show';
+                    this.getListData();
+                }else {
+                    //下拉距离不足
+
+                    this.pullingType = 'pulling';
+                    this.refreshing = 'hide';
+                }
+            },
             getListData(){
 
-
-                console.log("I'm refreshing...");
-                this.$data.ListData = [];
+                this.$data.pullingType = 'refreshing';
                 api.get_recommend_projects(this.dataHandle);
             },
             dataHandle(response){
 
                 console.log(response);
+                this.$data.ListData = [];
+
                 if (response.ok){
                     //网络请求成功
                     var items = get_items_from_result(response.data);
                     if (items){
                         //数据获取成功
                         this.$data.ListData = items;
+                        this.pullingType = 'pullingFinished';
                     }else {
 
                         //数据获取失败
+                        this.loadingError = '网络请求异常'
                     }
 
                 }else {
                     //网络请求失败
-
+                    this.loadingError = '网络链接失败'
                 }
+
+                setTimeout(()=>{
+
+                    this.refreshing = 'hide';
+                    this.pullingType = 'pulling';
+                },2000)
+            },
+            hidRefreshingV(){
+
+
             }
         },
         created () {
@@ -223,18 +279,19 @@
         height: 100px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
         background-color: #afddff;
     }
     .refreshText{
 
         color: #888888;
+        margin-bottom: 30px;
         font-size: 42px;
         text-align: center;
     }
     .loadingView{
-
+        height: 500px;
         display: flex;
         justify-content: center;
         align-items: center;

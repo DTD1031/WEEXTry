@@ -75,7 +75,7 @@
                 target: 'World',
                 bottomBtData:[
                     {title:'推荐',selected:true,imgSrc:"http://www.easyicon.net/api/resizeApi.php?id=1206034&size=128",router:'/'},
-                    {title:'项目',selected:false,imgSrc:"http://www.easyicon.net/api/resizeApi.php?id=1206032&size=128",router:'homeLogin'},
+                    {title:'项目',selected:false,imgSrc:"http://www.easyicon.net/api/resizeApi.php?id=1206032&size=128",router:'project'},
                     {title:'用户',selected:false,imgSrc:"http://www.easyicon.net/api/resizeApi.php?id=1206028&size=128",router:'uct'},
                     {title:'更多',selected:false,imgSrc:"http://www.easyicon.net/api/resizeApi.php?id=1206003&size=128",router:'more'}
                 ],
