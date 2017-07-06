@@ -83,7 +83,7 @@
         methods:{
             processLogin(){
 //                this.toastMsg('home11==='+this.$store.getters.userinfo.username);
-                console.log('==================home created  get userinfo====================='+this.$store.getters.userinfo.username);
+//                console.log('==================home created  get userinfo====================='+this.$store.getters.userinfo.username);
                 this.loginText = this.$store.getters.userinfo.username?this.$store.getters.userinfo.username+' 注销':'登录';
             },
             testR (){
@@ -171,7 +171,9 @@
         created () {
             console.log('==================home created=====================');
             setTimeout(this.processLogin,100);
+            this.$store.commit('setActivedTabIndex',0);
             this.getListData();
+
         },
         components:{
 

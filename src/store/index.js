@@ -17,6 +17,7 @@ var state = {
     activedTabIndex:0
 };
 
+
 storage.getItem(STORAGE_KEY_USERINFO, event => {
     if (event.result == "success" && event.data){
         // modal.toast({ message: event.data, duration: 1 });
@@ -47,7 +48,7 @@ const store = new Vuex.Store({
     plugins:[storagePlugin],
     getters: {
       userinfo(state){
-        console.log('==================getters-userinfo=============');
+        // console.log('==================getters-userinfo=============');
         var user = state.userinfo;
         var now = new Date().getTime();
         var time = user.time;
@@ -63,12 +64,18 @@ const store = new Vuex.Store({
           // });
         }
         return user;
+      },
+      activedTabIndex(state){
+          return state.activedTabIndex;
       }
     },
     mutations: {
       setUserinfo(state,user){
         user.time = new Date().getTime();
         state.userinfo = user;
+      },
+      setActivedTabIndex(state,index){
+          state.activedTabIndex = index;
       }
     }
 

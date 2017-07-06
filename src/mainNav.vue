@@ -1,16 +1,19 @@
 <template>
     <div class="wrapper">
         <router-view class="mainRouterView"></router-view>
-        <div class="bottomDiv">
-            <div class="routeBt" v-for="(item,index) in bottomBtData" @click="jumpTaber(item)">
-                <image class="tabberIcon" :src="item.imgSrc"></image>
-                <text :class="[item.selected ? 'bottomTitleSelected' : 'bottomTitle']" ref="tab1">{{item.title}}</text>
+        <div class="bottomDiv" style="height:96px;">
+            <div class="routeBt" style="height:96px;" v-for="(item,index) in bottomBtData" @click="jumpTaber(item)">
+                <image style="width: 176px;height:96px;" :src="$store.getters.activedTabIndex==item.index?item.activedImgSrc:item.imgSrc"></image>
             </div>
+
+
         </div>
+
     </div>
+
 </template>
 
-<style scoped>
+<style>
     .wrapper {
 
     }
@@ -21,12 +24,14 @@
     }
     .bottomDiv{
         border-top-width: 2px;
-        border-color: lightgray;
+        border-top-color:#919191;
+
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: stretch;
-        height: 100px;
+        height: 108px;
+
 
         position: fixed;
         left: 0px;
@@ -34,32 +39,15 @@
         bottom: 0px;
     }
     .routeBt{
+
+
+        border-right-width:0px !important;
+
         flex: 1;
         background-color: white;
-
-        border-color: lightgray;
-        border-right-width: 2px;
-
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-    .tabberIcon{
-
-        width: 40px;
-        height:40px;
-    }
-    .bottomTitle{
-
-        margin-top: 12px;
-        color: #444444;
-        font-size: 27px;
-    }
-    .bottomTitleSelected{
-
-        margin-top: 12px;
-        color: #0fd3a1;
-        font-size: 27px;
     }
 </style>
 <script>
@@ -74,31 +62,41 @@
                 logoUrl: 'https://alibaba.github.io/weex/img/weex_logo_blue@3x.png',
                 target: 'World',
                 bottomBtData:[
-                    {title:'推荐',selected:true,imgSrc:"http://www.easyicon.net/api/resizeApi.php?id=1206034&size=128",router:'/'},
-                    {title:'项目',selected:false,imgSrc:"http://www.easyicon.net/api/resizeApi.php?id=1206032&size=128",router:'project'},
-                    {title:'用户',selected:false,imgSrc:"http://www.easyicon.net/api/resizeApi.php?id=1206028&size=128",router:'uct'},
-                    {title:'更多',selected:false,imgSrc:"http://www.easyicon.net/api/resizeApi.php?id=1206003&size=128",router:'more'}
-                ],
-                tabSelected: 3,
+//                    {title:'推荐',index:0,selected:this.$store.getters.activedTabIndex==0,imgSrc:this.$store.getters.activedTabIndex==0?"https://m.zhelitou.com.cn/images/home_active.png":"https://m.zhelitou.com.cn/images/home.png",router:'/'},
+//                    {title:'项目',index:1,selected:this.$store.getters.activedTabIndex==1,imgSrc:this.$store.getters.activedTabIndex==1?"https://m.zhelitou.com.cn/images/pro_active.png":"https://m.zhelitou.com.cn/images/pro.png",router:'project'},
+//                    {title:'用户',index:2,selected:this.$store.getters.activedTabIndex==2,imgSrc:this.$store.getters.activedTabIndex==2?"https://m.zhelitou.com.cn/images/account_active.png":"https://m.zhelitou.com.cn/images/account.png",router:'uct'},
+//                    {title:'更多',index:3,selected:this.$store.getters.activedTabIndex==3,imgSrc:this.$store.getters.activedTabIndex==3?"https://m.zhelitou.com.cn/images/more_active.png":"https://m.zhelitou.com.cn/images/more.png",router:'more'}
+
+                    {title:'推荐',index:0,activedImgSrc:"https://m.zhelitou.com.cn/images/home_active.png",imgSrc:"https://m.zhelitou.com.cn/images/home.png",router:'/'},
+                    {title:'项目',index:1,activedImgSrc:"https://m.zhelitou.com.cn/images/pro_active.png",imgSrc:"https://m.zhelitou.com.cn/images/pro.png",router:'project'},
+                    {title:'用户',index:2,activedImgSrc:"https://m.zhelitou.com.cn/images/acount_active.png",imgSrc:"https://m.zhelitou.com.cn/images/acount.png",router:'uct'},
+                    {title:'更多',index:3,activedImgSrc:"https://m.zhelitou.com.cn/images/more_active.png",imgSrc:"https://m.zhelitou.com.cn/images/more.png",router:'more'}
+                ]
             }
         },
         methods: {
-
             jumpTaber(item){
-
-                this.jump(item.router);
-                for (var i=0; i < 4;i++){
-
-                    this.$data.bottomBtData[i].selected = false;
+                if(item.index == 2 && !this.$store.getters.userinfo.username){
+                    this.jump('/login');
+                    return;
                 }
-
-                item.selected = true;
+                this.$store.commit('setActivedTabIndex',item.index);
+                this.jump(item.router);
+//                for (var i=0; i < 4;i++){
+//
+//                    this.$data.bottomBtData[i].selected = false;
+//                }
+//
+//                item.selected = true;
             }
-        },
-        components: {
-
-            'bottomBt':bottomBt
         }
     }
+
+
+//    exports.setActivedTabIndex=function(index){
+////        default.data.activedTabIndex=index;
+//    }
+
+
 </script>
 

@@ -70,6 +70,9 @@
                     {title:'推荐项目',iconSrc:'https://m.zhelitou.com.cn/images/recommend.png'},
                 ],
             }
+        },
+        created () {
+            this.$store.commit('setActivedTabIndex',2);
         }
     }
 </script>
