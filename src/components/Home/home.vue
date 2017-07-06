@@ -32,7 +32,7 @@
                     </div>
                 </slider>
                 <div class="loginBt" @click="goToLogin">
-                    <text style="color: white;font-weight: bold">{{loginText}}</text>
+                    <text style="color: white;font-weight: bold">{{$store.getters.userinfo.username?$store.getters.userinfo.username+' 注销':'登录'}}</text>
                 </div>
             </div>
             <div v-if="!ListData[1]" class="loadingView">
@@ -99,7 +99,7 @@
                     this.jump('/login');
                 }else{
                     this.$store.commit('setUserinfo',{});
-                    this.loginText='登录';
+//                    this.loginText='登录';
                 }
             },
             pullingForRefresh(even){
@@ -135,7 +135,6 @@
                 api.get_recommend_projects(this.dataHandle);
             },
             dataHandle(response){
-
                 console.log(response);
                 this.$data.ListData = [];
 
@@ -170,10 +169,11 @@
         },
         created () {
             console.log('==================home created=====================');
-            setTimeout(this.processLogin,100);
+
+
+//            setTimeout(this.processLogin,100);
             this.$store.commit('setActivedTabIndex',0);
             this.getListData();
-
         },
         components:{
 

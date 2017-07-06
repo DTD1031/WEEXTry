@@ -50,19 +50,19 @@ const store = new Vuex.Store({
       userinfo(state){
         // console.log('==================getters-userinfo=============');
         var user = state.userinfo;
-        var now = new Date().getTime();
-        var time = user.time;
-        var distance = now - time;
-
-
-        if(distance >=EXIPRIE_TIME){
-          user = userinfo_origin;
-          store.commit('setUserinfo',user);
-          // state.userinfo=user;
-          // storage.setItem(STORAGE_KEY_USERINFO,JSON.stringify(user),event => {
-          //     console.log('session timeout');
-          // });
-        }
+        // var now = new Date().getTime();
+        // var time = user.time;
+        // var distance = now - time;
+        //
+        //
+        // if(distance >=EXIPRIE_TIME){
+        //   user = userinfo_origin;
+        //   store.commit('setUserinfo',user);
+        //   // state.userinfo=user;
+        //   // storage.setItem(STORAGE_KEY_USERINFO,JSON.stringify(user),event => {
+        //   //     console.log('session timeout');
+        //   // });
+        // }
         return user;
       },
       activedTabIndex(state){
