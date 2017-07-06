@@ -70,9 +70,9 @@
                 ],
                 count:1,
                 imageList: [
-                    { src: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=430472977,3630340535&fm=26&gp=0.jpg'},
-                    { src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498563839597&di=1ec085a5d860f9ba6b2c339454b7bbf3&imgtype=0&src=http%3A%2F%2Fimg.newyx.net%2Fnewspic%2Fimage%2F201411%2F15%2F153d372e1f.jpg'},
-                    { src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498563839593&di=2521ed845a7dc572f1d5e270bb0e362f&imgtype=0&src=http%3A%2F%2Fow.replays.net%2Fuploads%2Fremote%2F24861464934623.jpg'}
+                    { src: 'https://m.zhelitou.com.cn/fileserver/images/20170705/201707050937262690.jpg'},
+                    { src: 'https://m.zhelitou.com.cn/fileserver/images/20170706/201707061421485534.jpg'},
+                    { src: 'https://m.zhelitou.com.cn/fileserver/images/20170705/201707050915016325.jpg'}
                 ],
                 refreshing:'hide',
                 pullingType: 'pulling',
@@ -191,7 +191,7 @@
     }
     .homeHeader{
         background-color: white;
-        height: 100px;
+        height: 96px;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -215,18 +215,18 @@
     .bannerSlider{
 
         width: 750px;
-        height: 400px;
+        height: 310px;
         display: flex;
     }
     .bannerSliderFrame{
 
         width: 750px;
-        height: 400px;
+        height: 310px;
     }
     .bannerImage{
 
         width: 750px;
-        height: 400px;
+        height: 310px;
     }
     .loginView {
 
