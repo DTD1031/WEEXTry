@@ -61,7 +61,7 @@
         name: 'home',
         data () {
             return {
-                loginText:this.$store.getters.userinfo.username?this.$store.getters.userinfo.username:'登录',
+                loginText:'',
                 ListData:[],
                 sliderData:[
                     {title:'累计盘活金额',num:'43000'},
@@ -81,7 +81,11 @@
             }
         },
         methods:{
-
+            processLogin(){
+//                this.toastMsg('home11==='+this.$store.getters.userinfo.username);
+                console.log('==================home created  get userinfo====================='+this.$store.getters.userinfo.username);
+                this.loginText = this.$store.getters.userinfo.username?this.$store.getters.userinfo.username+' 注销':'登录';
+            },
             testR (){
 
 
@@ -93,6 +97,9 @@
             goToLogin (even){
                 if(!this.$store.getters.userinfo.username){
                     this.jump('/login');
+                }else{
+                    this.$store.commit('setUserinfo',{});
+                    this.loginText='登录';
                 }
             },
             pullingForRefresh(even){
@@ -162,7 +169,8 @@
             }
         },
         created () {
-
+            console.log('==================home created=====================');
+            setTimeout(this.processLogin,100);
             this.getListData();
         },
         components:{

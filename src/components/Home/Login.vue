@@ -24,12 +24,15 @@
     </div>
 </template>
 
+
 <script type="text/ecmascript-6">
     import zltCommonHeader from "../zlt-common-header.vue"
     const modal = weex.requireModule('modal');
 
+
     export default {
         name: "login",
+
         data:function(){
             return {
                 input_username:'',
